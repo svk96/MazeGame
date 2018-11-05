@@ -7,12 +7,10 @@ public class Bullet : MonoBehaviour {
     // Members
     public float moveSpeed = 7.0f;
     private float maxDistance = 0.0f;
+    private float damage = 1.0f;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
+    private GameObject triggerEnemy;
+
 	// Update is called once per frame
 	void Update () {
         transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
@@ -22,4 +20,13 @@ public class Bullet : MonoBehaviour {
             Destroy(this.gameObject);
         }
 	}
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Enemy")
+        {
+            triggerEnemy = other.gameObject;
+            triggerEnemy.GetComponent<Enemy>().health -= damage;
+            Destroy(this.gameObject);
+        }
+    }
 }
