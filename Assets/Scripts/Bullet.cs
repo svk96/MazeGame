@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour {
 
     // Members
     public float moveSpeed = 7.0f;
-    private float maxDistance = 0.0f;
+    private float passedTime = 0.0f;
     private float damage = 1.0f;
 
     private GameObject triggerEnemy;
@@ -14,8 +14,8 @@ public class Bullet : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-        maxDistance += 1 * Time.deltaTime;
-        if(maxDistance >= 5)
+        passedTime += 1 * Time.deltaTime;
+        if(passedTime >= 5)
         {
             Destroy(this.gameObject);
         }
