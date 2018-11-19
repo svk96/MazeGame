@@ -51,13 +51,13 @@ public class Player : MonoBehaviour {
             Shoot();
         }
     }
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision other)
     {
-        if (other.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy")
         {
             health -= 1.0f;
             transform.Translate(initial.position, Space.World);
-            if(health < 0)
+            if (health < 0)
             {
                 print("Player died");
                 /*Destroy(this.gameObject);*/
