@@ -22,8 +22,9 @@ GameObject:
   - component: {fileID: 33176091499802936}
   - component: {fileID: 23325684316496486}
   - component: {fileID: 65594655152140536}
-  - component: {fileID: 114254742493230230}
+  - component: {fileID: 195444720782346746}
   - component: {fileID: 54851909672835780}
+  - component: {fileID: 114254742493230230}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -39,7 +40,7 @@ Transform:
   m_GameObject: {fileID: 1311340888652524}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 0.8, y: 1, z: 0.8}
+  m_LocalScale: {x: 0.6, y: 1, z: 0.6}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -127,3 +128,25 @@ MonoBehaviour:
   health: 1
   pointsGiven: 1
   moveSpeed: 2
+  agent: {fileID: 195444720782346746}
+--- !u!195 &195444720782346746
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1311340888652524}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 90
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 0
+  m_AutoBraking: 0
+  m_AutoRepath: 0
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 1
