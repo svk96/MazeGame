@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
@@ -9,11 +10,17 @@ public class Player : MonoBehaviour {
     public float points = 0.0f;
     public GameObject bulletSpawner;
     public GameObject bullet;
-    public Transform initial;
-    
+    private Vector3 initial;
+    private GameObject Life;
+    private GameObject Score;
+    public GameObject GUI;
+
     // Use this for initialization
     void Start () {
-		
+        GUI = GameObject.FindGameObjectWithTag("GUI");
+        Life = GameObject.FindGameObjectWithTag("Life");
+        Score = GameObject.FindGameObjectWithTag("Score");
+        initial = transform.position;
 	}
 	
 	// Update is called once per frame
@@ -50,13 +57,20 @@ public class Player : MonoBehaviour {
         {
             Shoot();
         }
+
+        if(GUI.activeInHierarchy)
+        {
+            Life.GetComponent<Text>().text = health.ToString();
+            Score.GetComponent<Text>().text = points.ToString();
+        }
     }
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Enemy")
         {
             health -= 1.0f;
-            transform.Translate(initial.position, Space.World);
+            transform.position = initial;
+            /*transform.Translate(initial.position, Space.World);*/
             if (health < 0)
             {
                 print("Player died");

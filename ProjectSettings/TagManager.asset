@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - Wall
+  - StartMenu
+  - Score
+  - Life
+  - GUI
   layers:
   - Default
   - TransparentFX
