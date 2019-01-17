@@ -68,6 +68,7 @@ public class Player : MonoBehaviour {
             Life.GetComponent<Text>().text = health.ToString();
             Score.GetComponent<Text>().text = points.ToString();
         }
+        
     }
     void OnCollisionEnter(Collision other)
     {
