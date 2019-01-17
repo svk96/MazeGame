@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -11,13 +12,17 @@ public class Player : MonoBehaviour {
     public GameObject bulletSpawner;
     public GameObject bullet;
     private Vector3 initial;
+    private GameObject StartMenu;
     private GameObject Life;
     private GameObject Score;
     public GameObject GUI;
 
+    public static bool GameIsPaused = false;
+
     // Use this for initialization
     void Start () {
         GUI = GameObject.FindGameObjectWithTag("GUI");
+        StartMenu = GameObject.FindGameObjectWithTag("StartMenu");
         Life = GameObject.FindGameObjectWithTag("Life");
         Score = GameObject.FindGameObjectWithTag("Score");
         initial = transform.position;
@@ -71,10 +76,14 @@ public class Player : MonoBehaviour {
             health -= 1.0f;
             transform.position = initial;
             /*transform.Translate(initial.position, Space.World);*/
-            if (health < 0)
+            if (health < 1)
             {
                 print("Player died");
                 /*Destroy(this.gameObject);*/
+                StartMenu.SetActive(true);
+                Time.timeScale = 0f;
+                GameIsPaused = true;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
 
         }
